@@ -1,0 +1,20 @@
+import pyxel
+from game import Game
+
+class App:
+
+    def __init__(self):
+        pyxel.init(240, 176, display_scale=2, capture_sec=0, fps=30)
+        pyxel.load("res.pyxres")
+        pyxel.run(self.update, self.draw)
+
+    def update(self):
+        if (pyxel.frame_count == 1*30):
+            Game(pyxel.frame_count)
+
+    def draw(self):
+        pyxel.cls(0)
+        pyxel.text(pyxel.width/2 - 1, pyxel.height/2 - 3,
+                   str(int(pyxel.frame_count/30)+1), 7)
+
+App()
